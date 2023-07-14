@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "name": "Ankit Pandey",
+        "email": "ankit@gmail.com",
+        "mobile": 8175088988,
+        "city": "Lucknow",
+        "role": "Developer"
+    },
+    {
+        "id": 2,
+        "name": "Anoop Pandey",
+        "email": "anoop@gmail.com",
+        "mobile": 8175088999,
+        "city": "Gorkhpur",
+        "role": "Manager"
+    }
+]
