@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import ModeEditIcon from '@mui/icons-material/ModeEdit';
-import DeleteIcon from '@mui/icons-material/Delete';
 import CustomPagination from '../CustomPagination';
 import { deleteEmployee } from '../../redux/employeeSlice';
 import CustomDialog from '../controls/customDialog';
+import CustomTable from '../CustomTable';
+import { employeeTableColumn } from '../../constants/employee';
 
 const EmployeeList = ({ employeeData, setModalInfo }) => {
     const [deleteModal, setDeleteModal] = useState({
@@ -21,75 +20,13 @@ const EmployeeList = ({ employeeData, setModalInfo }) => {
 
     return (
         <div className='mt-10'>
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Employee Id</TableCell>
-                            <TableCell>Name</TableCell>
-                            <TableCell>Email</TableCell>
-                            <TableCell>Phone Number</TableCell>
-                            <TableCell>City</TableCell>
-                            <TableCell>Role</TableCell>
-                            <TableCell>Action</TableCell>
-                        </TableRow>
-                    </TableHead>
-
-                    <TableBody>
-                        {
-                            employeeData?.slice(pagination.offset, (pagination?.offset + pagination.limit))?.map((emp) => (
-                                <TableRow
-                                    key={emp?.id}
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                >
-                                    <TableCell component="th" scope="row">
-                                        {emp.id}
-                                    </TableCell>
-                                    <TableCell component="th" scope="row">
-                                        {emp.name}
-                                    </TableCell>
-                                    <TableCell component="th" scope="row">
-                                        {emp.email}
-                                    </TableCell>
-                                    <TableCell component="th" scope="row">
-                                        {emp.mobile}
-                                    </TableCell>
-                                    <TableCell component="th" scope="row">
-                                        {emp.city}
-                                    </TableCell>
-                                    <TableCell component="th" scope="row">
-                                        {emp.role}
-                                    </TableCell>
-                                    <TableCell component="th" scope="row">
-                                        <span
-                                            style={{cursor: 'pointer'}}
-                                            onClick={() => {
-                                                setModalInfo({
-                                                    open: true,
-                                                    data: emp,
-                                                })
-                                            }}
-                                        >
-                                            <ModeEditIcon />
-                                        </span>
-                                        <span
-                                            style={{cursor: 'pointer'}}
-                                            onClick={() => {
-                                                setDeleteModal({
-                                                    open: true,
-                                                    data: emp.id,
-                                                })
-                                            }}
-                                        >
-                                            <DeleteIcon />
-                                        </span>
-                                    </TableCell>
-                                </TableRow>
-                            ))
-                        }
-                    </TableBody>
-                </Table>
-            </TableContainer>
+            <CustomTable
+                dataSource={employeeData.slice(pagination.offset, (pagination?.offset + pagination.limit))}
+                columns={ employeeTableColumn(
+                    setModalInfo,
+                    setDeleteModal,
+                ) }
+            />
 
             <CustomPagination
                 pagination={pagination}

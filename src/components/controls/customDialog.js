@@ -1,5 +1,9 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
 import React from 'react';
+import CustomButton from './customButton';
 
 const CustomDialog = ({ dialogProps, title, content, actions, cancelAction, yesAction }) => {
     return (
@@ -15,10 +19,15 @@ const CustomDialog = ({ dialogProps, title, content, actions, cancelAction, yesA
                 {
                     actions && (
                         <DialogActions>
-                            <Button onClick={cancelAction}>Canel</Button>
-                            <Button onClick={yesAction}>
-                                Yes
-                            </Button>
+                            <CustomButton
+                                onClick={cancelAction}
+                                btnText='Cancel'
+                            />
+                            <CustomButton
+                                onClick={yesAction}
+                                btnText='Yes'
+                                color='error'
+                            />
                         </DialogActions>
                     )
                 }

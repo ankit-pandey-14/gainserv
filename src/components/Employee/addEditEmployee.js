@@ -5,9 +5,10 @@ import Grid from '@mui/material/Grid';
 import TextInput from '../controls/textInput';
 import FormSelect from '../controls/formSelect';
 import { ROLES_LIST } from '../../constants';
-import { Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { addEmployee, updateEmployee } from '../../redux/employeeSlice';
+import CustomButton from '../controls/customButton';
+import Stack from '@mui/material/Stack';
 
 const initialValues = {
     name: "",
@@ -121,25 +122,19 @@ const AddEditEmployee = ({modalInfo, setModalInfo, type}) => {
                     </Grid>
 
                     <Grid item xs={12}>
-                        <Button type='submit' variant="contained">
-                            {
-                                type==='Add'
-                                ? 'Add Employee'
-                                : 'Edit Employee'
-                            }
-                        </Button>
-                        <Button
-                            style={{marginLeft: '9px'}}
-                            variant="outlined"
-                            onClick={() =>{
-                                setModalInfo({
-                                    open: false,
-                                    data: null,
-                                })
-                            }}
-                        >
-                            Cancel
-                        </Button>
+                        <Stack spacing={2}>
+                            <CustomButton
+                                type='submit'
+                                variant='contained'
+                                btnText={ type === 'Add' ? 'Add Employee' : 'Edit Employee' }
+                                color='success'
+                            />
+                            <CustomButton
+                                variant='outlined'
+                                btnText='Cancel'
+                                onClick={() => { setModalInfo({ open: false, data: null, }) }}
+                            />
+                        </Stack>
                     </Grid>
                 </Grid>
             </form>

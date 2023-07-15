@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import EmployeeList from '../../components/Employee/employeeList';
-import { Button, Grid, TextField } from '@mui/material';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
 import AddEditModal from '../../components/controls/addEditModal';
 import { useSelector } from 'react-redux';
+import CustomButton from '../../components/controls/customButton';
 
 const EmployeeListScreen = () => {
     const empList = useSelector((state) => state.emp.userList);
@@ -54,18 +56,14 @@ const EmployeeListScreen = () => {
                                 }}
                             />
                         </Grid>
-                        <Grid item xs={12} sm={4}>
-                            <Button
+                        <Grid item xs={12} sm={4} className='text-right'>
+                            <CustomButton
                                 variant='outlined'
-                                onClick={() => {
-                                    setModalInfo({
-                                        open: true,
-                                        data: null,
-                                    })
+                                onClick={() =>{
+                                    setModalInfo({ open: true, data: null, })
                                 }}
-                            >
-                                Add Employee
-                            </Button>
+                                btnText='+ Add Employee'
+                            />
                         </Grid>
                     </Grid>
                 </div>
