@@ -1,14 +1,15 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 
-const CustomButton = ({ type, variant='text', onClick, btnText, color, classes='' }) => {
+const CustomButton = (props) => {
+    const { variant, onClick, btnText, ...others } = props;
+
     return (
         <>
             <Button
-                type={type}
-                variant={variant}
+                variant={variant || 'text'}
                 onClick={onClick}
-                color={color}
+                {...others}
             >
                 {btnText}
             </Button>

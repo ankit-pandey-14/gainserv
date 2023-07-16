@@ -1,22 +1,32 @@
 import { TextField } from '@mui/material';
 import React from 'react';
 
-const TextInput = ({label, name, error, touch, value, handleBlur, handleChange}) => {
+const CustomInput = ({
+    label,
+    name,
+    value,
+    error,
+    touch,
+    onBlur,
+    onChange,
+}) => {
+    
     return(
         <>
             <TextField
                 size='small'
-                style={{width: '90%'}}
+                fullWidth
                 variant='outlined'
                 label={label}
                 name={name}
                 value={value}
-                onChange={handleChange}
-                onBlur={handleBlur}
+                onChange={onChange}
+                onBlur={onBlur}
+                error={error && touch}
             />
             {error && touch && <p className='form-error'>{error}</p>}
         </>
     );
 };
 
-export default TextInput
+export default CustomInput

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import AddEditEmployee from '../Employee/addEditEmployee';
-import CustomDialog from './customDialog';
+import AddEditEmployee from './addEditEmployee';
+import CustomDialog from '../controls/customDialog';
 
 const AddEditModal = ({ modalInfo, setModalInfo, type }) => {
     const [notification, setNotification] = useState({

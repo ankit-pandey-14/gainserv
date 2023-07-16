@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import EmployeeList from '../../components/Employee/employeeList';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import AddEditModal from '../../components/controls/addEditModal';
+import AddEditModal from '../../components/Employee/addEditModal';
 import { useSelector } from 'react-redux';
 import CustomButton from '../../components/controls/customButton';
 

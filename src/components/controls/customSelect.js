@@ -1,21 +1,31 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import React from 'react';
 
-const FormSelect = ({label, name, handleChange, handleBlur, error, touch, value, options}) => {
+const CustomSelect = ({
+    label,
+    name,
+    value,
+    error,
+    touch,
+    onChange,
+    onBlur,
+    options,
+}) => {
 
     return (
         <>
-            <FormControl sx={{width: '90%' }}>
+            <FormControl fullWidth size='small'>
                 <InputLabel id="select-label">{label}</InputLabel>
                 <Select
+                    fullWidth
                     labelId="select-label"
                     id="select"
                     label={label}
-                    size='small'
                     name={name}
                     value={value}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    error={error && touch}
                 >
                     {
                         options?.map((option, index) => (
@@ -30,4 +40,4 @@ const FormSelect = ({label, name, handleChange, handleBlur, error, touch, value,
     );
 };
 
-export default FormSelect;
+export default CustomSelect;

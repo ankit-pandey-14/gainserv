@@ -5,7 +5,9 @@
         "email": "ankit@gmail.com",
         "mobile": 8175088988,
         "city": "Lucknow",
-        "role": "Developer"
+        "role": "Developer",
+        "isPermanent": true,
+        "gender": "male"
     },
     {
         "id": 2,
@@ -13,6 +15,8 @@
         "email": "anoop@gmail.com",
         "mobile": 8175088999,
         "city": "Gorkhpur",
-        "role": "Manager"
+        "role": "Manager",
+        "isPermanent": true,
+        "gender": "male"
     }
 ]
