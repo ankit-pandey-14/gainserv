@@ -2,13 +2,14 @@ import React from 'react';
 import { useFormik } from 'formik';
 import { addEmployeeValidation } from '../../utilities/validation';
 import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
 import TextInput from '../controls/textInput';
 import FormSelect from '../controls/formSelect';
 import { ROLES_LIST } from '../../constants';
 import { useDispatch, useSelector } from 'react-redux';
 import { addEmployee, updateEmployee } from '../../redux/employeeSlice';
 import CustomButton from '../controls/customButton';
-import Stack from '@mui/material/Stack';
+import { USER_ADDED, USER_UPDATED } from '../../constants/message';
 
 const initialValues = {
     name: "",
@@ -18,7 +19,7 @@ const initialValues = {
     city: "",
 };
 
-const AddEditEmployee = ({modalInfo, setModalInfo, type}) => {
+const AddEditEmployee = ({modalInfo, setModalInfo, type, setNotification}) => {
     const empList = useSelector((state) => state?.emp?.userList);
     const dispatch = useDispatch();
 
@@ -49,7 +50,11 @@ const AddEditEmployee = ({modalInfo, setModalInfo, type}) => {
             setModalInfo({
                 open: false,
                 data: null,
-            })
+            });
+            setNotification({
+                visible: true,
+                messege: type === 'Add' ? USER_ADDED : USER_UPDATED
+            });
         },
     });
 

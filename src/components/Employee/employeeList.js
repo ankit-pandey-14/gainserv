@@ -7,6 +7,10 @@ import CustomTable from '../CustomTable';
 import { employeeTableColumn } from '../../constants/employee';
 
 const EmployeeList = ({ employeeData, setModalInfo }) => {
+    const [notification, setNotification] = useState({
+        visible: false,
+        messege: null,
+    });
     const [deleteModal, setDeleteModal] = useState({
         open: false,
         data: null,
@@ -46,7 +50,7 @@ const EmployeeList = ({ employeeData, setModalInfo }) => {
                     'aria-labelledby': 'dialog-title',
                 }}
                 content = 'Are you Sure you want to Delete this Record'
-                title={'Alert'}
+                title={'Delete - Alert !!'}
                 actions={true}
                 cancelAction={ () => {
                     setDeleteModal({
@@ -61,6 +65,8 @@ const EmployeeList = ({ employeeData, setModalInfo }) => {
                         data: null,
                     })
                 }}
+                notification={notification}
+                setNotification={setNotification}
             />
         </div>
     );

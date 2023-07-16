@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AddEditEmployee from '../Employee/addEditEmployee';
 import CustomDialog from './customDialog';
 
 const AddEditModal = ({ modalInfo, setModalInfo, type }) => {
+    const [notification, setNotification] = useState({
+        visible: false,
+        messege: null,
+    });
+
     return(
         <>
             <CustomDialog
@@ -21,7 +26,16 @@ const AddEditModal = ({ modalInfo, setModalInfo, type }) => {
                     ? 'Add Employee'
                     : 'Edit Employee'
                 }
-                content={<AddEditEmployee modalInfo={modalInfo} setModalInfo={setModalInfo} type={type} />}
+                content={
+                    <AddEditEmployee
+                        modalInfo={modalInfo}
+                        setModalInfo={setModalInfo}
+                        type={type}
+                        setNotification={setNotification}
+                    />
+                }
+                notification={notification}
+                setNotification={setNotification}
             />
         </>
     );
