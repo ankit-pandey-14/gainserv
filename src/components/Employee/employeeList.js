@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import CustomPagination from '../CustomPagination';
 import { deleteEmployee } from '../../redux/employeeSlice';
 import CustomDialog from '../controls/customDialog';
@@ -7,6 +8,7 @@ import CustomTable from '../CustomTable';
 import { employeeTableColumn } from '../../constants/employee';
 
 const EmployeeList = ({ employeeData, setModalInfo }) => {
+    const navigate = useNavigate();
     const [notification, setNotification] = useState({
         visible: false,
         messege: null,
@@ -29,6 +31,7 @@ const EmployeeList = ({ employeeData, setModalInfo }) => {
                 columns={ employeeTableColumn(
                     setModalInfo,
                     setDeleteModal,
+                    navigate,
                 ) }
             />
 

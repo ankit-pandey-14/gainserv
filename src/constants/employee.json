@@ -16,7 +16,7 @@
         "mobile": 8175088999,
         "city": "Gorkhpur",
         "role": "Manager",
-        "isPermanent": true,
+        "isPermanent": false,
         "gender": "male"
     }
 ]

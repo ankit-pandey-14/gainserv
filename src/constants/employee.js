@@ -1,7 +1,9 @@
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { Stack } from '@mui/material';
+import CustomButton from '../components/controls/customButton';
 
-export const employeeTableColumn = ( setModalInfo, setDeleteModal ) => [
+export const employeeTableColumn = ( setModalInfo, setDeleteModal, navigate ) => [
     {
         title: 'Employee ID',
         key: 'emp_id',
@@ -18,25 +20,17 @@ export const employeeTableColumn = ( setModalInfo, setDeleteModal ) => [
         dataIndex: 'email'
     },
     {
-        title: 'Phone Number',
-        key: 'mobile',
-        dataIndex: 'mobile'
-    },
-    {
-        title: 'Location',
-        key: 'location',
-        dataIndex: 'city'
-    },
-    {
-        title: 'Role',
-        key: 'role',
-        dataIndex: 'role'
-    },
-    {
         title: 'Actions',
         key: 'action',
         render: (record) => (
-            <>
+            <Stack direction='row' spacing={1}>
+                <CustomButton
+                    variant='outlined'
+                    onClick={() => {
+                        navigate(`/employee/${record?.id}`, { state: record })
+                    }}
+                    btnText="View"
+                />
                 <span
                     className='cursor-p'
                     onClick={() => { setModalInfo({ open: true, data: record, }) }}
@@ -49,7 +43,7 @@ export const employeeTableColumn = ( setModalInfo, setDeleteModal ) => [
                 >
                     <DeleteIcon />
                 </span>
-            </>
+            </Stack>
         ),
     },
 ];
