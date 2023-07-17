@@ -4,6 +4,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { HOME } from '../../constants/routes';
 import CustomButton from '../../components/controls/customButton';
 
+import KeyboardBackspaceOutlinedIcon from '@mui/icons-material/KeyboardBackspaceOutlined';
+
 const EmployeeDetailsScreen = () => {
     const { state } = useLocation();
     const navigate = useNavigate();
@@ -103,11 +105,12 @@ const EmployeeDetailsScreen = () => {
 
             <div className='mt-30 text-center'>
                 <CustomButton
-                    variant="contained"
+                    variant="outlined"
                     onClick={() => {
                         navigate(HOME);
                     }}
                     btnText="Back to home"
+                    startIcon={ <KeyboardBackspaceOutlinedIcon /> }
                 />
             </div>
         </div>
